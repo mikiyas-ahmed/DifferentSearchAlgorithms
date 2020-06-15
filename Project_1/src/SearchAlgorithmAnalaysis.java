@@ -19,6 +19,7 @@ public class SearchAlgorithmAnalaysis {
 		System.out.println(".....................Best case.........................");
 		
 		        long sb_S = System.nanoTime();
+		        
 				SimpleLinearSearch (best,best[0]);
 				long sb_S1 = System.nanoTime();
 				System.out.println( "\t\t\tsimple  "+(sb_S1-sb_S)+ " ns");
