@@ -16,64 +16,64 @@ public class SearchAlgorithmAnalaysis {
 		int [] worest=GenerateRandomArray(size,"worest");
 
        
-		System.out.println(".....................Best case.........................");
+		System.out.println(".....................Best case in millisecond.........................");
 		
-		        long sb_S = System.nanoTime();
+		        double sb_S = System.currentTimeMillis();
 		        
 				SimpleLinearSearch (best,best[0]);
-				long sb_S1 = System.nanoTime();
-				System.out.println( "\t\t\tsimple  "+(sb_S1-sb_S)+ " ns");
+				double sb_S1 = System.currentTimeMillis();
+				System.out.println( "\t\t\tsimple  "+(sb_S1-sb_S)+ " ms");
 				
-				long sb_I = System.nanoTime();
+				double sb_I = System.currentTimeMillis();
 				ImprovedLinearSearch(best,best[0]);
 				
-				long sb_I1 = System.nanoTime();
-				System.out.println("\t\t\timproved "+ (sb_I1-sb_I) + " ns");
+				double sb_I1 = System.currentTimeMillis();
+				System.out.println("\t\t\timproved "+ (sb_I1-sb_I) + " ms");
 		        
-				long sb_L = System.nanoTime();
+				double sb_L = System.currentTimeMillis();
 				ImprovedLinearSearchWithSentinel(best, best[0]);  
-				long sb_L1 = System.nanoTime();
-				System.out.println("\t\t\tsentinel "+ (sb_L1-sb_L) + " ns");
+				double sb_L1 = System.currentTimeMillis();
+				System.out.println("\t\t\tsentinel "+ (sb_L1-sb_L) + " ms");
 		
 
-		System.out.println("\n.....................average case.....................\n");
+		System.out.println("\n.....................average case in millisecond.....................\n");
 		
-		        long sa_S = System.nanoTime();
+		        long sa_S = System.currentTimeMillis();
 				SimpleLinearSearch (average,average[x]);
-				long sa_S1 = System.nanoTime();
-				System.out.println( "\t\t\tsimple  "+ (sa_S1-sa_S) + " ns");
+				long sa_S1 = System.currentTimeMillis();
+				System.out.println( "\t\t\tsimple  "+ (sa_S1-sa_S) + " ms");
 				
-				long sa_I = System.nanoTime();
+				long sa_I = System.currentTimeMillis();
 				ImprovedLinearSearch(average,average[x]);
-				long sa_I1 = System.nanoTime();
-				System.out.println("\t\t\timproved "+ (sa_I1-sa_I) + " ns");
+				long sa_I1 = System.currentTimeMillis();
+				System.out.println("\t\t\timproved "+ (sa_I1-sa_I) + " ms");
 		
 		
-				long sa_L = System.nanoTime();
+				long sa_L = System.currentTimeMillis();
 				ImprovedLinearSearchWithSentinel(average, average[x]);  
-				long sa_L1 = System.nanoTime();
-				System.out.println("\t\t\tsentinel "+ (sa_L1-sa_L) + " ns");
+				long sa_L1 = System.currentTimeMillis();
+				System.out.println("\t\t\tsentinel "+ (sa_L1-sa_L) + " ms");
 		       
 
-		System.out.println("\n\n.....................worest case.....................\n");
+		System.out.println("\n\n.....................worest case in millisecond.....................\n");
 
-		        double sw_S = System.nanoTime();
+		        double sw_S = System.currentTimeMillis();
 				SimpleLinearSearch (worest,worest[worest.length-1]);
-				double sw_S1 = System.nanoTime();
-				System.out.println( "\t\t\tsimple  "+ (sw_S1-sw_S) + " ns");
+				double sw_S1 = System.currentTimeMillis();
+				System.out.println( "\t\t\tsimple  "+ (sw_S1-sw_S) + " ms");
 				
-				long sw_I = System.nanoTime();
+				double sw_I = System.currentTimeMillis();
 				ImprovedLinearSearch(worest,worest[worest.length-1]);
-				long sw_I1 = System.nanoTime();
-				System.out.println("\t\t\timproved "+ (sw_I1-sw_I) + " ns");
+				double sw_I1 = System.currentTimeMillis();
+				System.out.println("\t\t\timproved "+ (sw_I1-sw_I) + " ms");
 		
-		
-				long sw_L = System.nanoTime();
+
+				double sw_L = System.currentTimeMillis();
 				ImprovedLinearSearchWithSentinel(worest,worest[worest.length-1]);  
-				long sw_L1 = System.nanoTime();
-				System.out.println("\t\t\tsentinel "+ (sw_L1-sw_L) + " ns");
+				double sw_L1 = System.currentTimeMillis();
+				System.out.println("\t\t\tsentinel "+ (sw_L1-sw_L) + " ms");
 		        
-	   System.out.println("\n\n.....................Binary Search.....................\n");
+	   System.out.println("\n\n.....................Binary Search in nano second.....................\n");
 				Arrays.sort(worest); 		
 				long sw_B = System.nanoTime();
 				binarySearch(worest,worest[worest.length-1]);; 
@@ -148,7 +148,7 @@ public class SearchAlgorithmAnalaysis {
 	{
 		Random rd = new Random(); // creating Random object
 		int[] arr = new int[size];
-		if(cases=="best") {
+		if("best".equals(cases)) {
 			for (int i = 0; i < arr.length; i++)
 			{
 				arr[i]=0;
@@ -157,17 +157,17 @@ public class SearchAlgorithmAnalaysis {
 			arr[0]=rd.nextInt(arr.length);
 			return arr;
 		}
-		else if(cases=="average") {
+		else if("average".equals(cases)) {
 			for (int i = 0; i < arr.length; i++)
 			{
 				arr[i]=0;
 
 			}
-			 x=size/2;
+			 x=rd.nextInt(arr.length);;
 			arr[x]=rd.nextInt(arr.length);
 			return arr;
 		}
-        else if(cases=="worest") {
+        else if("worest".equals(cases)) {
         	for (int i = 0; i < arr.length; i++)
 			{
 				arr[i]=0;
@@ -175,8 +175,6 @@ public class SearchAlgorithmAnalaysis {
 			}
 			arr[arr.length-1]=rd.nextInt(arr.length);
 		}
-		
-		//System.out.println(Arrays.toString(array));
 		return arr;
 	}
 
